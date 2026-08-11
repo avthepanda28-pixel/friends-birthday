@@ -1,0 +1,998 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SATVIK — Happy Birthday</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #030303;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* =========================
+   CINEMATIC BACKGROUND
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+
+    background:
+        radial-gradient(circle at 50% 30%, rgba(255, 194, 61, 0.12), transparent 25%),
+        radial-gradient(circle at 10% 70%, rgba(255,255,255,0.07), transparent 25%),
+        linear-gradient(180deg, #111 0%, #030303 65%);
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -9;
+    pointer-events: none;
+
+    background:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+
+    background-size: 70px 70px;
+    mask-image: linear-gradient(to bottom, black, transparent 80%);
+}
+
+/* =========================
+   STADIUM LIGHTS
+========================= */
+
+.stadium-light {
+    position: fixed;
+    width: 350px;
+    height: 700px;
+    z-index: -5;
+    pointer-events: none;
+    opacity: .17;
+    filter: blur(45px);
+
+    background: linear-gradient(
+        180deg,
+        rgba(255,255,255,.9),
+        transparent
+    );
+
+    transform: rotate(25deg);
+}
+
+.light-left {
+    top: -250px;
+    left: -180px;
+}
+
+.light-right {
+    top: -250px;
+    right: -180px;
+    transform: rotate(-25deg);
+}
+
+/* =========================
+   PARTICLES
+========================= */
+
+.particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -3;
+}
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #f6c95d;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #f6c95d;
+    animation: rise linear infinite;
+}
+
+@keyframes rise {
+    from {
+        transform: translateY(110vh);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    85% {
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-20vh);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   NAV
+========================= */
+
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 6vw;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    z-index: 10;
+}
+
+.logo {
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 5px;
+}
+
+.nav-tag {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #888;
+    text-transform: uppercase;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero-inner {
+    width: 100%;
+    max-width: 1300px;
+
+    animation: heroEnter 1.5s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes heroEnter {
+    from {
+        opacity: 0;
+        transform: translateY(70px) scale(.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.hero-top {
+    color: #f6c95d;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+/* HUGE NAME */
+
+.name {
+    font-family: 'Anton', sans-serif;
+
+    font-size: clamp(90px, 19vw, 260px);
+    line-height: .75;
+
+    letter-spacing: -4px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #ffffff 35%,
+            #a6a6a6 70%,
+            #4d4d4d 100%
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    position: relative;
+
+    text-shadow:
+        0 10px 40px rgba(0,0,0,.8);
+}
+
+/* Golden line behind name */
+
+.name::after {
+    content: "";
+    position: absolute;
+
+    width: 70%;
+    height: 2px;
+
+    left: 15%;
+    bottom: -25px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #f6c95d,
+        transparent
+    );
+
+    box-shadow: 0 0 25px rgba(246,201,93,.6);
+}
+
+.birthday {
+    margin-top: 70px;
+
+    font-size: clamp(30px, 5vw, 65px);
+    font-weight: 900;
+
+    letter-spacing: -2px;
+}
+
+.birthday span {
+    color: #f6c95d;
+
+    text-shadow:
+        0 0 20px rgba(246,201,93,.4);
+}
+
+.hero-description {
+    max-width: 720px;
+    margin: 25px auto 0;
+
+    color: #a9a9a9;
+
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+/* Scroll indicator */
+
+.scroll {
+    margin-top: 70px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    align-items: center;
+
+    color: #666;
+
+    font-size: 9px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 50px;
+
+    background: linear-gradient(
+        #f6c95d,
+        transparent
+    );
+}
+
+/* =========================
+   SECTION
+========================= */
+
+section:not(.hero) {
+    position: relative;
+}
+
+.section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 150px 25px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+
+    margin-bottom: 55px;
+}
+
+.section-small {
+    color: #f6c95d;
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.section-title {
+    margin-top: 12px;
+
+    font-size: clamp(40px, 6vw, 75px);
+    font-weight: 900;
+
+    letter-spacing: -4px;
+}
+
+/* =========================
+   PHOTO SECTION
+========================= */
+
+.photos {
+    display: grid;
+    grid-template-columns: 1.3fr .7fr;
+    gap: 25px;
+    align-items: stretch;
+}
+
+.photo {
+    position: relative;
+    overflow: hidden;
+
+    border-radius: 5px;
+
+    background: #111;
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.7);
+}
+
+.photo:first-child {
+    height: 600px;
+}
+
+.photo:last-child {
+    height: 600px;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    filter: saturate(.85) contrast(1.08);
+
+    transition:
+        transform 1s cubic-bezier(.2,.8,.2,1),
+        filter .7s ease;
+}
+
+.photo:hover img {
+    transform: scale(1.08);
+    filter: saturate(1.1) contrast(1.1);
+}
+
+.photo::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 45%,
+            rgba(0,0,0,.9)
+        );
+}
+
+.photo-info {
+    position: absolute;
+
+    bottom: 25px;
+    left: 25px;
+
+    z-index: 2;
+}
+
+.photo-info small {
+    color: #f6c95d;
+
+    font-size: 9px;
+    letter-spacing: 4px;
+}
+
+.photo-info h3 {
+    margin-top: 8px;
+
+    font-size: 24px;
+    font-weight: 800;
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats-section {
+    padding-top: 100px;
+}
+
+.rating {
+    position: relative;
+
+    padding: 55px 40px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.09),
+            rgba(255,255,255,.025)
+        );
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    border-radius: 8px;
+
+    overflow: hidden;
+}
+
+.rating::before {
+    content: "99";
+
+    position: absolute;
+
+    right: -20px;
+    bottom: -90px;
+
+    font-family: 'Anton';
+
+    font-size: 300px;
+
+    color: rgba(246,201,93,.035);
+
+    line-height: 1;
+}
+
+.rating-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 45px;
+}
+
+.overall {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.overall-number {
+    font-family: 'Anton';
+
+    font-size: 100px;
+    line-height: .8;
+
+    color: #f6c95d;
+
+    text-shadow:
+        0 0 35px rgba(246,201,93,.3);
+}
+
+.overall-text {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #777;
+    text-transform: uppercase;
+}
+
+.position {
+    border: 1px solid rgba(246,201,93,.4);
+
+    padding: 10px 18px;
+
+    color: #f6c95d;
+
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+
+    position: relative;
+    z-index: 2;
+}
+
+.stat {
+    padding: 25px;
+
+    background: rgba(0,0,0,.3);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    transition: .4s ease;
+}
+
+.stat:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(246,201,93,.5);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.5);
+}
+
+.stat-number {
+    font-family: 'Anton';
+
+    font-size: 65px;
+
+    color: white;
+}
+
+.stat-name {
+    margin-top: 7px;
+
+    font-size: 9px;
+
+    color: #777;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+/* =========================
+   BIRTHDAY MESSAGE
+========================= */
+
+.message {
+    max-width: 900px;
+    margin: auto;
+
+    text-align: center;
+
+    padding: 120px 25px;
+}
+
+.message-mark {
+    font-family: Georgia, serif;
+
+    font-size: 90px;
+
+    color: #f6c95d;
+
+    line-height: .5;
+
+    opacity: .7;
+}
+
+.message h2 {
+    font-size: clamp(35px, 6vw, 70px);
+
+    font-weight: 900;
+
+    letter-spacing: -3px;
+
+    margin: 35px 0;
+}
+
+.message p {
+    color: #999;
+
+    font-size: 16px;
+
+    line-height: 2;
+
+    max-width: 700px;
+
+    margin: auto;
+}
+
+.signature {
+    margin-top: 35px;
+
+    color: #f6c95d;
+
+    font-size: 10px;
+
+    letter-spacing: 6px;
+
+    text-transform: uppercase;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 100px 20px 50px;
+
+    text-align: center;
+
+    border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.footer-name {
+    font-family: 'Anton';
+
+    font-size: clamp(70px, 15vw, 180px);
+
+    color: rgba(255,255,255,.05);
+
+    line-height: .8;
+}
+
+.footer-bottom {
+    margin-top: 60px;
+
+    color: #555;
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width: 750px) {
+
+    nav {
+        padding: 25px 20px;
+    }
+
+    .nav-tag {
+        display: none;
+    }
+
+    .hero {
+        min-height: 90vh;
+    }
+
+    .name {
+        font-size: 27vw;
+    }
+
+    .photos {
+        grid-template-columns: 1fr;
+    }
+
+    .photo:first-child,
+    .photo:last-child {
+        height: 420px;
+    }
+
+    .rating {
+        padding: 35px 20px;
+    }
+
+    .rating-top {
+        align-items: flex-start;
+    }
+
+    .overall-number {
+        font-size: 75px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-number {
+        font-size: 50px;
+    }
+
+    .section {
+        padding: 100px 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- STADIUM LIGHTS -->
+<div class="stadium-light light-left"></div>
+<div class="stadium-light light-right"></div>
+
+<!-- PARTICLES -->
+<div class="particles">
+
+    <div class="particle" style="left:5%;animation-duration:12s;animation-delay:0s"></div>
+    <div class="particle" style="left:12%;animation-duration:16s;animation-delay:2s"></div>
+    <div class="particle" style="left:20%;animation-duration:11s;animation-delay:5s"></div>
+    <div class="particle" style="left:28%;animation-duration:15s;animation-delay:1s"></div>
+    <div class="particle" style="left:36%;animation-duration:13s;animation-delay:4s"></div>
+    <div class="particle" style="left:44%;animation-duration:18s;animation-delay:3s"></div>
+    <div class="particle" style="left:53%;animation-duration:12s;animation-delay:7s"></div>
+    <div class="particle" style="left:61%;animation-duration:16s;animation-delay:2s"></div>
+    <div class="particle" style="left:70%;animation-duration:14s;animation-delay:6s"></div>
+    <div class="particle" style="left:78%;animation-duration:17s;animation-delay:1s"></div>
+    <div class="particle" style="left:86%;animation-duration:12s;animation-delay:4s"></div>
+    <div class="particle" style="left:94%;animation-duration:15s;animation-delay:3s"></div>
+
+</div>
+
+<!-- NAV -->
+<nav>
+    <div class="logo">SVK / 99</div>
+
+    <div class="nav-tag">
+        A Special Celebration
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="hero-inner">
+
+        <div class="hero-top">
+            The Game. The Passion. The Journey.
+        </div>
+
+        <h1 class="name">
+            SATVIK
+        </h1>
+
+        <h2 class="birthday">
+            Happy <span>Birthday.</span>
+        </h2>
+
+        <p class="hero-description">
+            Today, we celebrate more than just a birthday.
+            We celebrate the player, the passion, the memories,
+            and the dreams waiting beyond the next ninety minutes.
+        </p>
+
+        <div class="scroll">
+            Scroll
+            <div class="scroll-line"></div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PHOTOS -->
+<section class="section">
+
+    <div class="section-heading">
+
+        <div>
+            <div class="section-small">
+                01 / The Moments
+            </div>
+
+            <h2 class="section-title">
+                On The Pitch.
+            </h2>
+        </div>
+
+    </div>
+
+    <div class="photos">
+
+        <div class="photo">
+
+            <img
+                src="satvik.png"
+                alt="Satvik"
+            >
+
+            <div class="photo-info">
+
+                <small>
+                    MOMENT / 01
+                </small>
+
+                <h3>
+                    The Player
+                </h3>
+
+            </div>
+
+        </div>
+
+        <div class="photo">
+
+            <img
+                src="satvik 2.png"
+                alt="Satvik Football"
+            >
+
+            <div class="photo-info">
+
+                <small>
+                    MOMENT / 02
+                </small>
+
+                <h3>
+                    The Journey
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- STATS -->
+<section class="section stats-section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <div class="section-small">
+                02 / Player Profile
+            </div>
+
+            <h2 class="section-title">
+                Rated <span style="color:#f6c95d;">99.</span>
+            </h2>
+
+        </div>
+
+    </div>
+
+    <div class="rating">
+
+        <div class="rating-top">
+
+            <div class="overall">
+
+                <div class="overall-number">
+                    99
+                </div>
+
+                <div class="overall-text">
+                    Overall<br>
+                    Rating
+                </div>
+
+            </div>
+
+            <div class="position">
+                FOOTBALLER
+            </div>
+
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+
+                <div class="stat-number">
+                    99
+                </div>
+
+                <div class="stat-name">
+                    Pace
+                </div>
+
+            </div>
+
+            <div class="stat">
+
+                <div class="stat-number">
+                    99
+                </div>
+
+                <div class="stat-name">
+                    Shooting
+                </div>
+
+            </div>
+
+            <div class="stat">
+
+                <div class="stat-number">
+                    99
+                </div>
+
+                <div class="stat-name">
+                    Dribbling
+                </div>
+
+            </div>
+
+            <div class="stat">
+
+                <div class="stat-number">
+                    99
+                </div>
+
+                <div class="stat-name">
+                    Passing
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- BIRTHDAY MESSAGE -->
+<section class="message">
+
+    <div class="message-mark">
+        “
+    </div>
+
+    <h2>
+        Here's to another<br>
+        <span style="color:#f6c95d;">
+            incredible year.
+        </span>
+    </h2>
+
+    <p>
+        May this year bring unforgettable matches, impossible goals,
+        endless laughter, and moments worth remembering forever.
+        Keep chasing the ball, keep chasing the dream, and never stop
+        becoming the player you're meant to be.
+    </p>
+
+    <div class="signature">
+        Happy Birthday, Satvik
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-name">
+        SATVIK
+    </div>
+
+    <div class="footer-bottom">
+        PLAY WITH PASSION · DREAM WITHOUT LIMITS · 99
+    </div>
+
+</footer>
+
+</body>
+</html>
+```
